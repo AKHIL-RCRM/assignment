@@ -1,7 +1,7 @@
 import spacy
 import PyPDF2
 
-nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('en_core_web_md')
 
 
 def return_ents(doc):
