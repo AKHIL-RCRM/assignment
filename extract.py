@@ -4,8 +4,9 @@ import PyPDF2
 nlp = spacy.load('en_core_web_md')
 
 
-def return_ents(doc):
+def find_ner(text):
     d = {}
+    doc = nlp(text)
     if doc.ents:
         for ent in doc.ents:
             d[ent.text] = ent.label_ + ' - ' + str(spacy.explain(ent.label_))
@@ -21,8 +22,4 @@ def extract_file():
     for i in range(pdf_reader.numPages):
         page = pdf_reader.getPage(i)
         text = text + page.extract_text()
-
-    doc = nlp(text)
-    return return_ents(doc)
-
-
+    return find_ner(text)
